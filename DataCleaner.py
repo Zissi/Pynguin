@@ -3,7 +3,6 @@ Created on 07.03.2015
 
 @author: zissi
 '''
-import Image
 import os
 import cv2
 
