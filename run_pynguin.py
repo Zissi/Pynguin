@@ -19,5 +19,4 @@ if __name__ == '__main__':
     
     orb.images = clean_birds[:5]
     bird_features = orb.extract_features()
-    print bird_features
     

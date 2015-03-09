@@ -39,8 +39,7 @@ class OrbFeatureExtractor(object):
     def _make_bag_of_visual_words(self, descriptors):
         '''creates codebook with 500 clusters'''
         bow_trainer = cv2.BOWKMeansTrainer(500)
-        descriptors = [descriptor.astype(np.float32) for descriptor in descriptors]  # BOW needs 32bit floats for vocabulary creation
-        descriptors_array = np.vstack(descriptors)
+        descriptors_array = np.vstack(descriptors).astype(np.float32)  # BOW needs 32bit floats for vocabulary creation
         bow_trainer.add(descriptors_array)
         return bow_trainer.cluster()  # returns vocabulary as array of floats
         
