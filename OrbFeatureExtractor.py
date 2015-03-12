@@ -45,7 +45,7 @@ class OrbFeatureExtractor(object):
         
     def _calculate_features(self, descriptors, vocabulary):
         '''translates descriptors of each image into feature vector using the vocabulary'''
-        features = []
+        feature_list = []
         vocabulary = vocabulary.astype("uint8")  # BFMatcher needs ints
         matcher = cv2.BFMatcher()
         for descriptor in descriptors:
@@ -54,5 +54,6 @@ class OrbFeatureExtractor(object):
             visual_word_counts = Counter([x.trainIdx for x in matches])
             for visual_word_idx in visual_word_counts:
                 feature[visual_word_idx] = visual_word_counts[visual_word_idx]  # adds counts to feature list, to get zeros for not present visual words
-            features.append(feature)
+            feature_list.append(feature)
+        features = np.vstack(feature_list)         
         return features
