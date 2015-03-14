@@ -11,20 +11,9 @@ class RgbHistogramExtractor(object):
     classdocs
     '''
 
-
     def __init__(self, images):
         self.images = images
-        
- #   def calc_np_hist(self):
- #       histogramms = np.ndarray((len(self.images), 512))
- #       for image in self.images:
-#            print image.shape
-#            hist = np.histogramdd(image, 8, [0, 256], normed=True)
- #           print hist[0].shape
-  #           np.vstack([histogramms, hist[0]])  # hist[1] are the bins which are equally spaced
-   #     return histogramms
-        
-        
+                       
     def calc_hist(self):
         histogramms = []
         for image in self.images:
