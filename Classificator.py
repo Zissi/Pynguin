@@ -9,6 +9,7 @@ from sklearn import cross_validation
 from sklearn.ensemble import RandomForestClassifier
 from sklearn import datasets
 from sklearn.linear_model.logistic import LogisticRegression
+
 class Classificator(object):
     '''
     classdocs
@@ -18,7 +19,7 @@ class Classificator(object):
         self.penguin_features = penguin_features
         self.bird_features = bird_features
         
-    def classify(self, classifier):
+    def train_classifier(self, classifier):
         features, labels = self._create_input()  
         if classifier == "svm":
             clf = svm.SVC()
