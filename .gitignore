@@ -1,0 +1,6 @@
+*.pyc
+pynguin_pwd
+settings.py
+.project
+.pydevproject
+*~

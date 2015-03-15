@@ -1,0 +1,11 @@
+
+{% if image %}
+<img width=200 src=media/{{image}}>
+<p> I think I am a {{classification}}.</p>
+{% endif %}
+<form enctype="multipart/form-data" method="post" action="/img_classifier/upload">
+{% csrf_token %}
+{{ form }}  
+<input type="submit" value="Submit" />
+</form>
+
