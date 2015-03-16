@@ -13,7 +13,7 @@ class RgbHistogramExtractor(object):
 
     def __init__(self, images):
         self.images = images
-                       
+
     def calc_hist(self):
         histogramms = []
         for image in self.images:
