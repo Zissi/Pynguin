@@ -8,9 +8,10 @@ from pynguin_django import settings
 from django.template.defaultfilters import filesizeformat
 from django.core.exceptions import ValidationError
 
-pkl_path = '/home/derdot/workspace/Pynguin/classifier.pkl'
+pkl_path = '../classifier.pkl'
 with open(pkl_path) as pkl_file:
     classifier = pickle.load(pkl_file)
+
 
 class RestrictedFileField(forms.FileField):
 
@@ -35,10 +36,12 @@ class RestrictedFileField(forms.FileField):
 
         return data
 
+
 class UploadFileForm(forms.Form):
     image = RestrictedFileField(content_types=settings.CONTENT_TYPES,
                                 max_upload_size=settings.MAX_UPLOAD_SIZE)
-    
+
+
 def upload_file(request):
     image_name = None
     classification = None
@@ -53,13 +56,15 @@ def upload_file(request):
     return render(request, 'img_classifier/index.html', {'form':form,
                                                          "image":image_name,
                                                          'classification':classification})
- 
+
+
 def save_image(request):
     filename = get_filename(request)
     with open(filename, 'wb+') as destination:
         for chunk in request.FILES['image'].chunks():
             destination.write(chunk)
     return filename
+
 
 def get_filename(request):
     original_name = request.FILES['image'].name
@@ -68,6 +73,7 @@ def get_filename(request):
     new_name = tmpf.name
     tmpf.close()
     return new_name
+
 
 def analyze_query(image_name):
     query_analyzer = QueryAnalyzer(image_name, classifier)
